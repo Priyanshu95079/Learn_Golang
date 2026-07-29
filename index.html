@@ -249,6 +249,7 @@ h2{font:700 28px/1.16 var(--fd);letter-spacing:-.03em;margin:0 0 10px}
 .rlink span.src{font:400 11px/1.4 var(--fb);color:var(--fg3);display:block;margin-top:2px}
 .rlink.doc{border-left:3px solid var(--acc)}
 .rlink.video{border-left:3px solid var(--d3a)}
+.rlink.more{border-left:3px solid var(--d2b);opacity:.9}
 
 .watch{display:flex;gap:8px;padding:9px 10px;border-radius:9px;background:rgba(199,125,30,.08);
        border:1px solid rgba(199,125,30,.22);font-size:12.5px;line-height:1.55;color:var(--fg2)}
@@ -611,8 +612,13 @@ DAYS.forEach(function(d){
 
     if(u.doc){
       var dl=el("div","rlink doc",'<b>Read</b><a href="'+u.doc[1]+'" target="_blank" rel="noopener">'+
-        esc(u.doc[0])+'<span class="ext">↗</span></a>');
+        esc(u.doc[0])+'<span class="ext">↗</span></a>'+(u.doc[2]?'<span class="src">'+esc(u.doc[2])+'</span>':''));
       b.appendChild(dl);
+    }
+    if(u.more){
+      var ml=el("div","rlink more",'<b>Go deeper</b><a href="'+u.more[1]+'" target="_blank" rel="noopener">'+
+        esc(u.more[0])+'<span class="ext">↗</span></a>'+(u.more[2]?'<span class="src">'+esc(u.more[2])+'</span>':''));
+      b.appendChild(ml);
     }
     if(u.video){
       var vl=el("div","rlink video",'<b>Watch</b><a href="'+u.video[1]+'" target="_blank" rel="noopener">'+
@@ -710,7 +716,8 @@ function applyFilter(){
     var c=document.querySelector('.unit[data-uid="'+u.id+'"]');
     var a=document.querySelector('.nav a[data-uid="'+u.id+'"]');
     if(!c) return;
-    var hay=(u.id+" "+u.title+" "+u.why+" "+(u.do||"")+" "+(u.watch||"")+" "+(u.doc?u.doc[0]:"")).toLowerCase();
+    var hay=(u.id+" "+u.title+" "+u.why+" "+(u.do||"")+" "+(u.watch||"")+" "+
+      (u.doc?u.doc[0]:"")+" "+(u.more?u.more[0]:"")).toLowerCase();
     var vis=(!currentQuery||hay.indexOf(currentQuery)>-1)&&(!hideDone||!done[u.id]);
     c.classList.toggle("hide",!vis);
     if(a) a.classList.toggle("hide",!vis);
