@@ -28,7 +28,7 @@ const DAYS = [
   blurb: "Ten units, zero to competent-reader. Unit 1.9 is where most bugs are born — do not rush it.",
   units: [
 
-  { id:"1.1", title:"Why Go?",
+  { id:"1.1", min:25, title:"Why Go?",
     outline:"The beginnings of Go · Go vs other languages · Supported platforms, cross compiling · Key distinguishing features",
     res:[
       ["video","Rob Pike — Go Proverbs","https://www.youtube.com/@golang","youtube.com","15 min on the official channel. The design philosophy in one sitting — nothing explains <em>why</em> Go looks like this more efficiently.",1],
@@ -43,7 +43,7 @@ GOOS=darwin  GOARCH=arm64 go build -o app-mac`}],
     do:"Cross-compile Hello World for all three platforms. Note the binary size, and that it needs no JVM, no interpreter, no node_modules."
   },
 
-  { id:"1.2", title:"Setting Up Go",
+  { id:"1.2", min:25, title:"Setting Up Go",
     outline:"Downloading & installing · Go environment variables · Why Git, Mercurial? · Go Playground",
     res:[
       ["doc","Tutorial: Get started with Go","https://go.dev/doc/tutorial/getting-started","go.dev","Official, 15 minutes, zero to a running module",1],
@@ -55,7 +55,7 @@ GOOS=darwin  GOARCH=arm64 go build -o app-mac`}],
     do:"Run go env, then explain in your own words what GOPATH, GOMODCACHE, GOPROXY and GOSUMDB each do."
   },
 
-  { id:"1.3", title:"Basic Program, Go Tools",
+  { id:"1.3", min:30, title:"Basic Program, Go Tools",
     outline:"Hello World, packages, import and main · go build · go run",
     res:[
       ["doc","How to Write Go Code","https://go.dev/doc/code","go.dev","Official. Packages, imports, main, and the build lifecycle — with the <em>why</em> most tutorials skip",1],
@@ -74,7 +74,7 @@ go clean -cache                # when the build cache misbehaves`}],
     do:"Write Hello World in package main. Move a function into a package `greet` and import it. Now lowercase the function name and read the compiler error carefully."
   },
 
-  { id:"1.4", title:"Working with Strings",
+  { id:"1.4", min:40, title:"Working with Strings",
     outline:"String functions · String formatting",
     res:[
       ["article","Strings, bytes, runes and characters in Go","https://go.dev/blog/strings","go.dev","The one article that explains why <code>len(\"नमस्ते\")</code> is <b>18</b>, not 6. Non-negotiable for an Indian-language product.",1],
@@ -87,7 +87,7 @@ go clean -cache                # when the build cache misbehaves`}],
     do:"Write wordfreq.go — read a file, count word frequency, print the top 10 sorted by count desc then alphabetically. Then run it on a Hindi text file and explain the byte-vs-rune difference in your output."
   },
 
-  { id:"1.5", title:"Variables and Assignment",
+  { id:"1.5", min:30, title:"Variables and Assignment",
     outline:"var, := , new · Multiple assignment · Values · Variables · Constants",
     res:[
       ["doc","A Tour of Go — Basics through Constants","https://go.dev/tour/basics/1","go.dev","12 interactive slides you can't skim, because you have to run each one",1],
@@ -103,7 +103,7 @@ go clean -cache                # when the build cache misbehaves`}],
     do:"Write an iota block for HTTP status categories. Add a String() method, then try golang.org/x/tools/cmd/stringer to generate it for you."
   },
 
-  { id:"1.6", title:"Errors",
+  { id:"1.6", min:50, title:"Errors",
     outline:"Errors in Go · Error conventions · Custom errors, panic and recover, defer",
     res:[
       ["article","Working with Errors in Go 1.13","https://go.dev/blog/go1.13-errors","go.dev","%w wrapping, errors.Is, errors.As. <b>This is the modern standard and how we handle errors at IndiaMART.</b> Most older tutorials predate it and teach the wrong thing.",1],
@@ -116,7 +116,7 @@ go clean -cache                # when the build cache misbehaves`}],
     do:"Define ErrNotFound (sentinel) and a ValidationError type. Build a handler → service → repo chain wrapping at each layer, then map to 404/400/500 using errors.Is and errors.As."
   },
 
-  { id:"1.7", title:"Functions",
+  { id:"1.7", min:35, title:"Functions",
     outline:"Writing a function · Return values · Multiple return values · Closures",
     res:[
       ["doc","A Tour of Go — Functions & Closures","https://go.dev/tour/moretypes/24","go.dev","The Fibonacci-generator exercise is the one that makes closures click",1],
@@ -133,7 +133,7 @@ go clean -cache                # when the build cache misbehaves`}],
     do:"Write a `type Middleware func(http.Handler) http.Handler` and chain three of them. You've just written the closure pattern under every Go web framework — you'll use it directly on Day 3."
   },
 
-  { id:"1.8", title:"Pointers, Parameters, Return Values",
+  { id:"1.8", min:40, title:"Pointers, Parameters, Return Values",
     outline:"Pointers · Parameters · Pass by value, pass by reference",
     res:[
       ["video","Jon Calhoun — pointers & value-vs-pointer receivers","https://www.calhoun.io/","calhoun.io","The clearest explanation of the thing that trips up every Java and Python developer",1],
@@ -145,7 +145,7 @@ go clean -cache                # when the build cache misbehaves`}],
     do:"Build an IntStack with Push, Pop, Peek, Len. Write Push with a value receiver first, watch it silently do nothing, then fix it and comment exactly why."
   },
 
-  { id:"1.9", title:"Arrays, Slices, Maps, for", flag:"Highest bug density in the workshop",
+  { id:"1.9", min:75, title:"Arrays, Slices, Maps, for", flag:"Highest bug density in the workshop",
     outline:"for · Arrays, slices · Maps · Range, continue, break, goto, fallthrough",
     res:[
       ["article","Go Slices: usage and internals","https://go.dev/blog/slices-intro","go.dev","Slice header, aliasing, append growth, three-index slices. <b>If a trainee reads one article all workshop, this is it.</b>",1],
@@ -184,7 +184,7 @@ for i := range ps { ps[i].N *= 10 }   // fix: index directly`}],
     do:"Predict all four outputs before running them. Paste each into the Go Playground and share your links in the team channel. Then write the fix for each in three sentences."
   },
 
-  { id:"1.10", title:"Generics",
+  { id:"1.10", min:40, title:"Generics",
     outline:"Type parameters and constraints · Writing generic functions and types · When (and when not) to use generics",
     res:[
       ["doc","Tutorial: Getting started with generics","https://go.dev/doc/tutorial/generics","go.dev","Official, hands-on, 20 minutes",1],
@@ -201,7 +201,7 @@ for i := range ps { ps[i].N *= 10 }   // fix: index directly`}],
   blurb: "Interfaces are the conceptual centre of Go. Unit 2.1 is the one to give the most room to.",
   units: [
 
-  { id:"2.1", title:"OOP — Structs, Interfaces, Encapsulation, Inheritance, Polymorphism", flag:"Most important conceptual unit",
+  { id:"2.1", min:90, title:"OOP — Structs, Interfaces, Encapsulation, Inheritance, Polymorphism", flag:"Most important conceptual unit",
     outline:"Structs, members, anonymous members · Methods · Pointer & value receivers · How structs take the place of objects · Encapsulation, data hiding · Inheritance with composition · Polymorphism",
     res:[
       ["doc","Effective Go — Interfaces & Embedding","https://go.dev/doc/effective_go#interfaces","go.dev","Official, and directly answers the TOC's “how structs take the place of objects”",1],
@@ -227,7 +227,7 @@ for i := range ps { ps[i].N *= 10 }   // fix: index directly`}],
     do:"Define `Notifier interface { Send(ctx, to, body string) error }`. Implement SMS, Email and Mock. Write a Dispatcher that fans out to []Notifier, and unit-test it with only the mock — no network. This is the exact shape of our CCS notification layer."
   },
 
-  { id:"2.2", title:"Dependency Management",
+  { id:"2.2", min:45, title:"Dependency Management",
     outline:"Go Modules (go.mod, go.sum) · go get, semantic versioning · Workspace structure, GOPATH, vendor, dep",
     res:[
       ["doc","Managing dependencies","https://go.dev/doc/modules/managing-dependencies","go.dev","Official, and exactly scoped to this unit",1],
@@ -251,7 +251,7 @@ go list -m -u all                        # what has updates available`}],
     do:"go mod init a fresh module. Add github.com/google/uuid, inspect go.sum, remove the import, run go mod tidy and watch it disappear. Then go mod why something you didn't add directly."
   },
 
-  { id:"2.3", title:"Goroutines, Parallelism",
+  { id:"2.3", min:45, title:"Goroutines, Parallelism",
     outline:"Concurrency with goroutines · Concurrency and parallelism",
     res:[
       ["video","Rob Pike — Concurrency is not Parallelism","https://www.youtube.com/@golang","youtube.com","30 min. <b>Mandatory. Watch it twice.</b> Concurrency is about <em>structure</em>; parallelism is about <em>execution</em>. All of Day 3 depends on holding that distinction.",1],
@@ -263,7 +263,7 @@ go list -m -u all                        # what has updates available`}],
     do:"Launch 5 goroutines that print their index. Run it 10 times and watch the ordering change. Then set runtime.GOMAXPROCS(1) and observe what changes — and what doesn't."
   },
 
-  { id:"2.4", title:"Handling Race Conditions",
+  { id:"2.4", min:35, title:"Handling Race Conditions",
     outline:"Example of a race condition",
     res:[
       ["doc","Data Race Detector","https://go.dev/doc/articles/race_detector","go.dev","How to run it, and what it can't catch — it only sees code paths that actually execute, which is why you run it over your whole test suite in CI",1],
@@ -278,7 +278,7 @@ go test -race ./...`}],
     do:"Write a counter incremented by 1000 goroutines with no synchronisation. Run with -race and read the report carefully — it gives you both the read site and the write site. Keep the output; you'll fix it in 2.5."
   },
 
-  { id:"2.5", title:"SyncGroup, Wait, Mutexes",
+  { id:"2.5", min:50, title:"SyncGroup, Wait, Mutexes",
     outline:"Sync, Wait · Mutexes · Deadlocks with mutexes · RW mutexes",
     res:[
       ["doc","sync package docs","https://pkg.go.dev/sync","pkg.go.dev","Genuinely the best resource here. Read Mutex, RWMutex, WaitGroup, Once and their examples end to end — the doc comments contain the rules most tutorials omit.",1],
@@ -294,7 +294,7 @@ go test -race ./...`}],
     do:"Fix the racy counter from 2.4 three ways — Mutex, RWMutex, atomic.Int64. Benchmark all three with go test -bench=. -benchmem. The result will surprise you, and that surprise is the lesson."
   },
 
-  { id:"2.6", title:"Configuration Management",
+  { id:"2.6", min:35, title:"Configuration Management",
     outline:"Environment-based configuration · Binding config to structs · Config libraries overview",
     res:[
       ["article","The Twelve-Factor App — Config","https://12factor.net/config","12factor.net","Not Go-specific, and that's the point. It's the <em>principle</em>: config lives in the environment, never in the repo.",1],
@@ -320,7 +320,7 @@ go test -race ./...`}],
   blurb: "Two of your TOC's labs live here — the search engine (3.1) and the load balancer (3.2). Both come straight from Rob Pike's talks.",
   units: [
 
-  { id:"3.1", title:"Channels", flag:"Lab: build a simple search engine",
+  { id:"3.1", min:75, title:"Channels", flag:"Lab: build a simple search engine",
     outline:"Buffered channels · Directional channels · Channel types · Select · Project: build a simple search engine",
     res:[
       ["video","Rob Pike — Go Concurrency Patterns","https://www.youtube.com/@golang","youtube.com","Google I/O 2012. <b>This talk literally builds the search-engine project in your TOC</b> — Google Search 1.0 → 2.0 → 3.0, adding fan-out, then timeouts, then replication. Watch before the lab, not after.",1],
@@ -341,7 +341,7 @@ func consumer(in  <-chan int)   // receive-only: can't accidentally close`}],
     do:"Build the concurrent search engine. Query 3 fake backends (Web, Image, Video), fan out with goroutines, fan in with a channel, add a select timeout so one slow backend can't stall the search, then add replication so you take the first of two replicas."
   },
 
-  { id:"3.2", title:"Concurrency in the Real World", flag:"Lab: build a load balancer",
+  { id:"3.2", min:90, title:"Concurrency in the Real World", flag:"Lab: build a load balancer",
     outline:"Rate limiting, bursty rate limiting · Worker pool · Project: load balancer · Context — cancellation, deadlines, propagation",
     res:[
       ["article","Go Concurrency Patterns: Pipelines and cancellation","https://go.dev/blog/pipelines","go.dev","Fan-out/fan-in, done channels, bounded parallelism. <b>The mental model behind every Kafka consumer we run.</b>",1],
@@ -359,7 +359,7 @@ func consumer(in  <-chan int)   // receive-only: can't accidentally close`}],
     do:"Build the load balancer. N workers, jobs dispatched to the least-loaded worker (a heap works nicely), results on a per-request channel, and a context timeout that cancels cleanly with zero goroutine leaks. Verify with runtime.NumGoroutine() before and after — the numbers must match."
   },
 
-  { id:"3.3", title:"Templates and Data Formats",
+  { id:"3.3", min:45, title:"Templates and Data Formats",
     outline:"HTML and text templates · JSON, marshalling, unmarshalling",
     res:[
       ["article","JSON and Go","https://go.dev/blog/json","go.dev","Marshal, Unmarshal, struct tags, interface{} decoding, streaming. Covers the whole JSON half of this unit.",1],
@@ -386,7 +386,7 @@ dec.DisallowUnknownFields()      // typos become 400s, not silent no-ops`}],
     do:"Marshal a User with json:\"-\" on the password and confirm it's absent. Then render an HTML page with html/template, inject <script>alert(1)</script> as a username, and watch it get escaped. Swap to text/template and watch the alert fire."
   },
 
-  { id:"3.4", title:"Building Web Servers, Using Regex in Go",
+  { id:"3.4", min:90, title:"Building Web Servers, Using Regex in Go",
     outline:"http package · Running a web server and handling requests · HTTP return codes · Regex · Routes, variables · Serving static files",
     res:[
       ["article","Mat Ryer — How I Write HTTP Services in Go After 13 Years","https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/","grafana.com","<b>Read this twice.</b> More practically useful for our work than any video on this list: handler structure, dependency injection without a framework, testability, graceful shutdown.",1],
@@ -420,7 +420,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
     do:"Build /healthz plus one CRUD resource with in-memory storage, three middlewares (request-ID, logging, panic recovery), static file serving, and graceful shutdown via srv.Shutdown(ctx). No framework — you need to know what Gin does for you before Day 4 hands you Gin."
   },
 
-  { id:"3.5", title:"Context gorilla package",
+  { id:"3.5", min:30, title:"Context gorilla package",
     outline:"Installing gorilla mux · Routing URLs, sub-routers",
     res:[
       ["article","Routing Enhancements for Go 1.22","https://go.dev/blog/routing-enhancements","go.dev","Read alongside gorilla, and understand what gorilla was solving",1],
@@ -437,7 +437,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
     do:"Build the same two routes three times — gorilla, stdlib, chi — and write three sentences on which you'd choose for a new IndiaMART service and why."
   },
 
-  { id:"3.6", title:"Build REST Services",
+  { id:"3.6", min:75, title:"Build REST Services",
     outline:"What is REST? · CRUD and REST · HTTP requests and REST · A REST project in Go · NEW: API versioning, pagination patterns, request/response validation",
     res:[
       ["repo","ThreeDotsLabs/wild-workouts-go-ddd-example","https://github.com/ThreeDotsLabs/wild-workouts-go-ddd-example","github.com","<b>Best repo on this list.</b> A deliberately badly-written Go service refactored into a good one, commit by commit, with an article series explaining each step. Read it after you've written your own.",1],
@@ -464,7 +464,7 @@ func getUser(w http.ResponseWriter, r *http.Request) {
   blurb: "The widest day by far. Use the scope table below — several of these are demo-and-discuss, not full labs.",
   units: [
 
-  { id:"4.1", title:"Files",
+  { id:"4.1", min:45, title:"Files",
     outline:"Reading files, writing files · Reading and writing to any pipe · Multipart file upload using REST",
     res:[
       ["doc","os and io package docs","https://pkg.go.dev/io","pkg.go.dev","The best resource here, because the whole unit is one idea: io.Reader and io.Writer are the universal interfaces, and <em>everything</em> implements them.",1],
@@ -494,7 +494,7 @@ defer file.Close()
     do:"Add POST /api/upload to your Day 3 service: 5 MB cap, only image/png and image/jpeg verified by sniffing, stored under a generated UUID filename. Then try to break your own endpoint with a path-traversal filename."
   },
 
-  { id:"4.2", title:"Databases",
+  { id:"4.2", min:75, title:"Databases",
     outline:"init and then main, importing to register with init, sql package · Working with MySQL",
     res:[
       ["article","go-database-sql.org","http://go-database-sql.org/","go-database-sql.org","The definitive database/sql tutorial. Driver registration, connection pooling, nil handling, and the mistakes everyone makes. <b>Best single resource in the whole of Day 4.</b>",1],
@@ -526,7 +526,7 @@ db.SetConnMaxLifetime(5 * time.Minute)   // below MySQL wait_timeout / LB idle t
     do:"Swap your Day 3 in-memory store for MySQL. Configure the pool. Add one transactional write path. Then deliberately kill MySQL mid-request and make sure your service returns a clean 503 instead of a panic."
   },
 
-  { id:"4.3", title:"Gin Web Framework",
+  { id:"4.3", min:40, title:"Gin Web Framework",
     outline:"Why Gin? · Building web applications using Gin · Latency discussion",
     res:[
       ["doc","Tutorial: Developing a RESTful API with Go and Gin","https://go.dev/doc/tutorial/web-service-gin","go.dev","Official Go tutorial, uses Gin, exactly scoped to this unit",1],
@@ -546,7 +546,7 @@ db.SetConnMaxLifetime(5 * time.Minute)   // below MySQL wait_timeout / LB idle t
     do:"Port your Day 3 REST API to Gin. Benchmark both with hey or wrk against the same database. Write down the difference — then write down what fraction of total latency it represents. That number is the point of the exercise."
   },
 
-  { id:"4.4", title:"Build gRPC Services", flag:"Demo scope only",
+  { id:"4.4", min:45, title:"Build gRPC Services", flag:"Demo scope only",
     outline:"Protobuf vs JSON · Synchronous gRPC · Asynchronous gRPC · Unidirectional & bidirectional streaming",
     res:[
       ["doc","gRPC Go Quick Start","https://grpc.io/docs/languages/go/quickstart/","grpc.io","Official, working service in about 15 minutes. Follow with the Basics Tutorial, which covers all four streaming modes.",1],
@@ -574,7 +574,7 @@ rpc Chat      (stream Req) returns (stream Resp); // 4. bidirectional`}],
     do:"Define a .proto with one unary and one server-streaming method. Generate with protoc-gen-go + protoc-gen-go-grpc, implement the server, call it from a Go client, inspect with grpcurl. Then stop — the depth belongs in the 30-day plan."
   },
 
-  { id:"4.5", title:"Unit Testing",
+  { id:"4.5", min:75, title:"Unit Testing",
     outline:"Writing and running unit tests · Table driven tests, go cover · Debugging and profiling · NEW: Mocking & test doubles",
     res:[
       ["repo","quii/learn-go-with-tests","https://github.com/quii/learn-go-with-tests","github.com","Free, TDD-driven, and it teaches Go <em>through</em> testing rather than bolting testing on at the end. <b>Best resource in the entire roadmap for this unit.</b>",1],
@@ -617,7 +617,7 @@ go tool cover -func=cover.out          # per-function summary`}],
     do:"Get your Day 3 service to ≥70% coverage with table-driven tests. Test handlers with httptest.ResponseRecorder, mock the notifier with a hand-written fake, then regenerate the same mock with mockgen — and compare which test you'd rather read in six months."
   },
 
-  { id:"4.6", title:"Benchmarking", flag:"Demo scope",
+  { id:"4.6", min:30, title:"Benchmarking", flag:"Demo scope",
     outline:"What are benchmarks? · Writing and running benchmarks · Additional libraries for testing",
     res:[
       ["doc","testing — Benchmarks","https://pkg.go.dev/testing#hdr-Benchmarks","pkg.go.dev","Official, and it explains the b.N loop, which is the one thing people get wrong",1],
@@ -634,7 +634,7 @@ benchstat old.txt new.txt          # is the difference significant?`}],
     do:"Benchmark += string concatenation against strings.Builder for 1000 iterations. Look at allocs/op, not time. Then benchmark append into make([]int, 0, n) versus a nil slice. Both results are memorable."
   },
 
-  { id:"4.7", title:"Deploy and Monitor Services",
+  { id:"4.7", min:75, title:"Deploy and Monitor Services",
     outline:"Docker build & deploy · Track outbound requests, DB calls · GC, goroutine activity, memory · NEW: Structured logging & correlation IDs · Basic Prometheus metrics",
     res:[
       ["article","Structured Logging with slog","https://go.dev/blog/slog","go.dev","<b>log/slog has been in the standard library since Go 1.21</b> — the modern answer for the logging half of this unit",1],
@@ -679,7 +679,7 @@ ENTRYPOINT ["/app"]`},
     do:"Containerise with the multi-stage build above and confirm the image is under 30 MB. Add slog JSON logging with request-ID propagation, a /metrics endpoint with a duration histogram, and /debug/pprof on a separate internal port. Then load-test it and read the heap profile."
   },
 
-  { id:"4.8", title:"Discussion on Frameworks in Go", flag:"Discussion, 30 min",
+  { id:"4.8", min:30, title:"Discussion on Frameworks in Go", flag:"Discussion, 30 min",
     outline:"Framework for microservices in Go · Gin web application framework",
     res:[
       ["article","Mat Ryer — How I Write HTTP Services in Go","https://grafana.com/blog/2024/02/09/how-i-write-http-services-in-go-after-13-years/","grafana.com","The strongest argument that for most services you don't need a framework at all",1],
@@ -699,7 +699,7 @@ ENTRYPOINT ["/app"]`},
     do:"Each trainee names one framework and argues for it in two minutes. Then the group picks a default for a new IndiaMART service and writes down why. The written rationale is the deliverable."
   },
 
-  { id:"4.9", title:"Security Basics",
+  { id:"4.9", min:50, title:"Security Basics",
     outline:"Input validation · SQL injection prevention · Secrets & configuration management",
     res:[
       ["repo","OWASP Go Secure Coding Practices Guide","https://github.com/OWASP/Go-SCP","github.com","Free, Go-specific, a chapter per topic. <b>Best single resource for this unit</b> and the one to hand out.",1],
@@ -723,7 +723,7 @@ db.QueryContext(ctx, "SELECT * FROM users WHERE email = ?", email)`}],
     do:"Run govulncheck ./... and gosec ./... against your Day 3 service and fix everything. Then deliberately write the vulnerable fmt.Sprintf query, exploit it with ' OR '1'='1, and fix it. Doing the attack once is worth ten slides about it."
   },
 
-  { id:"4.10", title:"Capstone Project", flag:"3–4 days, auto-graded out of 10",
+  { id:"4.10", min:720, title:"Capstone Project", flag:"3–4 days, auto-graded out of 10",
     outline:"End-to-end project integrating REST + Database + Testing + Docker deployment",
     res:[
       ["article","GoShort — capstone brief","#capstone","this package","REST + MySQL + tests + Docker, with an auto-grader that clones your commit, runs 64 black-box tests and returns a score out of 10 with a report naming every lost point",1]
