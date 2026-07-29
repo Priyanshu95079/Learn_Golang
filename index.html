@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Get Set GO — Golang Basics</title>
 <meta name="description" content="Golang fundamentals for new joiners. 32 short units, one precise resource each, and one thing to build.">
-<meta name="theme-color" content="#050912">
+<meta name="theme-color" content="#FBF9FA">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,45 +18,45 @@
    days read as a colour spectrum: cyan → violet → rose → amber.
    ════════════════════════════════════════════════════════════════════════ */
 :root{
-  --d1a:#00C2E0; --d1b:#22D3EE;
-  --d2a:#6366F1; --d2b:#A855F7;
-  --d3a:#EC4899; --d3b:#FB7185;
-  --d4a:#F97316; --d4b:#FBBF24;
+  --d1a:#0EA5B7; --d1b:#22C3D6;
+  --d2a:#7C6FE0; --d2b:#9B6FE0;
+  --d3a:#E0578E; --d3b:#E8748C;
+  --d4a:#E08A2E; --d4b:#E8B23A;
 
-  --g-brand:linear-gradient(115deg,#00C2E0 0%,#6366F1 38%,#A855F7 62%,#FB7185 100%);
+  --g-brand:linear-gradient(115deg,#0EA5B7 0%,#7C6FE0 38%,#C05FA8 62%,#E8748C 100%);
   --g-1:linear-gradient(135deg,var(--d1a),var(--d1b));
   --g-2:linear-gradient(135deg,var(--d2a),var(--d2b));
   --g-3:linear-gradient(135deg,var(--d3a),var(--d3b));
   --g-4:linear-gradient(135deg,var(--d4a),var(--d4b));
 
-  --bg:#050912; --sur:rgba(18,27,46,.92); --sur-s:#111C30; --sur2:rgba(24,35,58,.9); --sur3:#20304F;
-  --fg:#F5F9FE; --fg2:#B0C0DA; --fg3:#7488AA;
-  --line:rgba(255,255,255,.10); --line2:rgba(255,255,255,.20);
-  --acc:#3DD8F5; --acc-soft:rgba(61,216,245,.14);
-  --code:#040910; --code-fg:#DCEBF5;
-  --gold:#FBBF24;
-  --shadow:0 2px 6px rgba(0,0,0,.35),0 20px 55px -24px rgba(0,0,0,.9);
-  --glow:0 0 0 1px rgba(255,255,255,.07),0 14px 44px -16px rgba(99,102,241,.6);
+  --bg:#FBF9FA; --sur:#FFFFFF; --sur-s:#FFFFFF; --sur2:#F7F4F6; --sur3:#EFE9EE;
+  --fg:#1A1620; --fg2:#5C5468; --fg3:#8A8296;
+  --line:rgba(26,22,32,.09); --line2:rgba(26,22,32,.16);
+  --acc:#8654C9; --acc-soft:rgba(134,84,201,.09);
+  --code:#241F2C; --code-fg:#EDE8F2;
+  --gold:#C77D1E;
+  --shadow:0 1px 3px rgba(26,22,32,.05),0 16px 40px -22px rgba(80,60,110,.28);
+  --glow:0 0 0 1px rgba(26,22,32,.05),0 16px 40px -18px rgba(124,111,224,.35);
 
   --fd:"Space Grotesk",system-ui,sans-serif;
   --fb:"IBM Plex Sans",system-ui,sans-serif;
   --fm:"JetBrains Mono",ui-monospace,monospace;
-  --sb:300px; --r:14px;
+  --sb:300px; --r:16px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:26px;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{
-  margin:0;color:var(--fg);font:400 15.5px/1.68 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  margin:0;color:var(--fg);font:400 15.5px/1.7 var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden;
   background-color:var(--bg);
   background-image:
-    radial-gradient(55% 42% at 4% -6%,rgba(0,194,224,.40),transparent 62%),
-    radial-gradient(50% 38% at 40% -10%,rgba(99,102,241,.38),transparent 62%),
-    radial-gradient(54% 40% at 92% -6%,rgba(236,72,153,.30),transparent 62%),
-    radial-gradient(48% 36% at 68% 106%,rgba(251,191,36,.22),transparent 62%),
-    radial-gradient(44% 34% at 0% 90%,rgba(0,194,224,.22),transparent 62%),
-    radial-gradient(40% 32% at 100% 60%,rgba(139,92,246,.20),transparent 62%);
+    radial-gradient(58% 46% at 6% -8%,rgba(14,165,183,.22),transparent 60%),
+    radial-gradient(52% 42% at 42% -12%,rgba(124,111,224,.20),transparent 60%),
+    radial-gradient(56% 44% at 96% -8%,rgba(224,87,142,.17),transparent 60%),
+    radial-gradient(50% 40% at 66% 108%,rgba(232,178,58,.18),transparent 60%),
+    radial-gradient(46% 36% at -2% 92%,rgba(14,165,183,.14),transparent 60%),
+    radial-gradient(42% 34% at 102% 58%,rgba(155,111,224,.13),transparent 60%);
   background-attachment:fixed;background-repeat:no-repeat;
 }
 a{color:var(--acc);text-decoration:none}
@@ -64,7 +64,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 :focus-visible{outline:2.5px solid var(--acc);outline-offset:3px;border-radius:6px}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 code{font:500 .875em/1.45 var(--fm);background:var(--sur3);padding:.14em .4em;border-radius:5px}
-::selection{background:rgba(99,102,241,.4)}
+::selection{background:rgba(134,84,201,.18)}
 .gt{background:var(--g-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
 
 /* ════ SIDEBAR ════════════════════════════════════════════════════════ */
@@ -213,7 +213,7 @@ h2{font:700 28px/1.16 var(--fd);letter-spacing:-.03em;margin:0 0 10px}
 .unit::before{content:"";position:absolute;inset:0 auto 0 0;width:3px;opacity:.6}
 .unit[data-d="1"]::before{background:var(--g-1)} .unit[data-d="2"]::before{background:var(--g-2)}
 .unit[data-d="3"]::before{background:var(--g-3)} .unit[data-d="4"]::before{background:var(--g-4)}
-.unit.ok{border-color:rgba(61,216,245,.4)}
+.unit.ok{border-color:rgba(134,84,201,.35)}
 .unit.ok::before{opacity:1;width:4px}
 .unit.hide{display:none}
 .uh{display:flex;gap:11px;padding:16px 17px 12px;align-items:flex-start}
@@ -248,20 +248,20 @@ h2{font:700 28px/1.16 var(--fd);letter-spacing:-.03em;margin:0 0 10px}
 .rlink a .ext{font-size:10px;margin-left:4px;color:var(--fg3);vertical-align:super}
 .rlink span.src{font:400 11px/1.4 var(--fb);color:var(--fg3);display:block;margin-top:2px}
 .rlink.doc{border-left:3px solid var(--acc)}
-.rlink.video{border-left:3px solid var(--gold)}
+.rlink.video{border-left:3px solid var(--d3a)}
 
-.watch{display:flex;gap:8px;padding:9px 10px;border-radius:9px;background:rgba(251,191,36,.1);
-       border:1px solid rgba(251,191,36,.3);font-size:12.5px;line-height:1.55;color:var(--fg2)}
+.watch{display:flex;gap:8px;padding:9px 10px;border-radius:9px;background:rgba(199,125,30,.08);
+       border:1px solid rgba(199,125,30,.22);font-size:12.5px;line-height:1.55;color:var(--fg2)}
 .watch b{color:var(--gold);font-size:11px}
 
 .do{display:flex;gap:9px;padding:9px 10px;border-radius:9px;background:var(--acc-soft);
-    border:1px solid rgba(61,216,245,.28);font-size:12.5px;line-height:1.55;margin-top:auto}
+    border:1px solid rgba(134,84,201,.20);font-size:12.5px;line-height:1.55;margin-top:auto}
 .do b{display:block;font:600 9.5px/1 var(--fm);letter-spacing:.1em;text-transform:uppercase;
       color:var(--acc);margin-bottom:4px}
 
 .note{border-left:3px solid var(--line2);background:var(--sur2);padding:14px 17px;border-radius:0 12px 12px 0;
       margin:16px 0;font-size:14px;line-height:1.65;max-width:100ch}
-.note.warn{border-left-color:var(--gold);background:rgba(251,191,36,.09)}
+.note.warn{border-left-color:var(--gold);background:rgba(199,125,30,.07)}
 .note.rule{border-left-color:var(--acc);background:var(--acc-soft)}
 .note ol,.note ul{margin:10px 0 0;padding-left:20px}
 .note li{margin-bottom:7px}.note li:last-child{margin-bottom:0}
@@ -398,9 +398,9 @@ tbody tr:last-child td{border-bottom:none}
 
   <header class="hero">
     <div class="eyebrow"><i></i> IndiaMART · Tech Shubharambh</div>
-    <h1>Golang basics, <span class="gt">one page each.</span></h1>
-    <p class="lede">32 short units for new joiners. Every unit: what it's for, one official page, one
-      thing to build. No 40-minute lectures, no whole channels to sit through.</p>
+    <h1>Golang basics, <span class="gt">one page at a time.</span></h1>
+    <p class="lede">32 short units for new joiners. Each one: why it matters, one thing to read or watch,
+      one thing to build. Nothing here takes more than 15–20 minutes.</p>
     <div class="cta">
       <a class="btn btn--p" id="continue" href="#u1-1"><span id="ctaT">Start Day 1</span>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg></a>
@@ -421,10 +421,10 @@ tbody tr:last-child td{border-bottom:none}
     <div class="cards" id="anchors"></div>
     <div class="note rule" style="margin-top:22px">
       <ol>
-        <li><b>One unit at a time</b>, in order.</li>
-        <li><b>Read the doc link.</b> It's one specific page, not a whole manual — it won't take long.</li>
-        <li><b>Type the code</b> for the build task. Don't copy-paste.</li>
-        <li><b>Tick units off</b> as you finish. Your progress stays in this browser.</li>
+        <li><b>Go in order.</b> Later units lean on earlier ones.</li>
+        <li><b>Open the one link.</b> It's a single short page, not a whole manual.</li>
+        <li><b>Actually type the "Build this" task.</b> Reading isn't the same as doing.</li>
+        <li><b>Tick each unit off.</b> Your progress is saved right here in this browser.</li>
       </ol>
     </div>
   </section>
