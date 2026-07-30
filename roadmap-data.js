@@ -77,7 +77,7 @@ const DAYS = [
   { id:"1.3", title:"Hello World & Go Tools", min:20,
     why:"Packages, imports, and the four commands you'll type every day.",
     doc:["Go by Example: Hello World", "https://gobyexample.com/hello-world", "gobyexample · 1 page"],
-    concept:["Go CLI Tools: go fmt, go vet, go build and go run", "https://earthly.dev/blog/go-fmt/", "Earthly · 2023 · practical guide with examples"],
+    concept:["An Overview of Go's Tooling", "https://www.alexedwards.net/blog/an-overview-of-go-tooling", "Alex Edwards · updated 2025 · go fmt, go vet, go build, go test and more"],
     do:"Split Hello World into two files: package main, and a package greet it imports."
   },
 
